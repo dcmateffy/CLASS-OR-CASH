@@ -1,7 +1,7 @@
 # CLASS or CASH Functions
 
 import random
-import CLASSorCASHConstantsAndStrings
+from CLASSorCASHConstantsAndStrings import activities, red_numbers, messages, WINNING_AMOUNT
 
 
 def choose_class_or_cash(day):
@@ -40,7 +40,7 @@ def get_schedule(day):
     """
 
     if day == "Sunday":
-        activity = random.choice(CLASSorCASHConstantsAndStrings.activities)
+        activity = random.choice(activities)
 
         print(activity)
         print("Hope you feel ready for the busy week ahead!")
@@ -163,7 +163,7 @@ def spin_wheel():
     if spin_number == 0:
         spin_color = "green"
 
-    elif spin_number in CLASSorCASHConstantsAndStrings.red_numbers:
+    elif spin_number in red_numbers:
         spin_color = "red"
 
     else:
@@ -183,7 +183,7 @@ def random_prespin_message():
         Prints a randomly selected message.
     """ 
 
-    message = random.choice(CLASSorCASHConstantsAndStrings.messages)
+    message = random.choice(messages)
 
     print(message)
 
@@ -245,7 +245,7 @@ def check_game_status(money):
         "won", "lost", or "playing" based on the player's balance.
     """
 
-    if money >= CLASSorCASHConstantsAndStrings.WINNING_AMOUNT:
+    if money >= WINNING_AMOUNT:
         return "won"
 
     elif money < 1:
@@ -269,7 +269,7 @@ def play_roulette(money):
     play_again = "yes"
     rounds_played = 0
 
-    while play_again == "yes" and money >= 1 and money < CLASSorCASHConstantsAndStrings.WINNING_AMOUNT and rounds_played < 3:
+    while play_again == "yes" and money >= 1 and money < WINNING_AMOUNT and rounds_played < 3:
 
         print()
         print(f"You have ${money}")
