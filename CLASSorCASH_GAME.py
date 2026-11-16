@@ -1,7 +1,7 @@
 # CLASS or CASH: Casino Roulette
 
-import CLASSorCASHConstantsAndStrings
-import CLASSorCASHFunctions
+from CLASSorCASHConstantsAndStrings import HC_TUITION, WINNING_AMOUNT, days_of_week, welcome_message, goal_message
+from CLASSorCASHFunctions import get_schedule, choose_class_or_cash, play_roulette
 
 
 def main():
@@ -16,40 +16,40 @@ def main():
     """
 
     print()
-    print(CLASSorCASHConstantsAndStrings.welcome_message)
+    print(welcome_message)
     print("You are starting with $92,000, the equivalent to one full Holy Cross tuition!")
-    print(CLASSorCASHConstantsAndStrings.goal_message)
+    print(goal_message)
 
-    money = CLASSorCASHConstantsAndStrings.HC_TUITION
+    money = HC_TUITION
 
-    for current_day in CLASSorCASHConstantsAndStrings.days_of_week:
+    for current_day in days_of_week:
 
         print()
         print(f"Today is {current_day}")
 
-        if money >= CLASSorCASHConstantsAndStrings.WINNING_AMOUNT:
+        if money >= WINNING_AMOUNT:
             break
 
         elif current_day == "Sunday":
-            CLASSorCASHFunctions.get_schedule(current_day)
+            get_schedule(current_day)
 
         elif money < 1:
             print("You have no money left!")
             print("You must go about your normal day.")
-            CLASSorCASHFunctions.get_schedule(current_day)
+            get_schedule(current_day)
 
         else:
-            choice = CLASSorCASHFunctions.choose_class_or_cash(current_day)
+            choice = choose_class_or_cash(current_day)
 
             if choice == "class":
-                CLASSorCASHFunctions.get_schedule(current_day)
+                get_schedule(current_day)
 
             else:
-                money = CLASSorCASHFunctions.play_roulette(money)
+                money = play_roulette(money)
 
     print()
 
-    if money >= CLASSorCASHConstantsAndStrings.WINNING_AMOUNT:
+    if money >= WINNING_AMOUNT:
         print("Congratulations! You won CLASS or CASH!")
     else:
         print("You lost CLASS or CASH! Better luck next time!")
